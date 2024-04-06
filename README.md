@@ -1,3 +1,5 @@
+Pre requisites - Java 17+
+
 FileProcessor.java -> Main class to reverse the contents of the input file and write it to the output file 
 
 FileReadHelper.java -> Class to help read the contents of the file
