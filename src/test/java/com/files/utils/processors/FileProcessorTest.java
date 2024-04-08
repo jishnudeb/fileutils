@@ -28,7 +28,7 @@ class FileProcessorTest {
 	
 	@Test
 	void testFileReadError() {
-		FileProcessorResult fileProcessorResult = fileProcessor.reverseContents("FAIL_FILE_READ_OP","SUCCESSFUL_FILE_READ_OP");
+		FileProcessorResult fileProcessorResult = fileProcessor.reverseContents("FAIL_FILE_READ_OP","SUCCESSFUL_FILE_WRITE_OP");
 		Assertions.assertEquals(Status.FILE_READ_FAIL, fileProcessorResult.status());
 		Assertions.assertNull(fileProcessorResult.inputText());
 		Assertions.assertNull(fileProcessorResult.outputText());
@@ -36,7 +36,7 @@ class FileProcessorTest {
 	
 	@Test
 	void testFileEmptyError() {
-		FileProcessorResult fileProcessorResult = fileProcessor.reverseContents("EMPTY_FILE_READ_OP","SUCCESSFUL_FILE_READ_OP");
+		FileProcessorResult fileProcessorResult = fileProcessor.reverseContents("EMPTY_FILE_READ_OP","SUCCESSFUL_FILE_WRITE_OP");
 		Assertions.assertEquals(Status.READ_FILE_EMPTY_FAIL, fileProcessorResult.status());
 		Assertions.assertNull(fileProcessorResult.inputText());
 		Assertions.assertNull(fileProcessorResult.outputText());
@@ -44,7 +44,7 @@ class FileProcessorTest {
 	
 	@Test
 	void testFileWriteError() {
-		FileProcessorResult fileProcessorResult = fileProcessor.reverseContents("SUCCESSFUL_FILE_READ_OP","FAIL_FILE_READ_OP");
+		FileProcessorResult fileProcessorResult = fileProcessor.reverseContents("SUCCESSFUL_FILE_READ_OP","FAIL_FILE_WRITE_OP");
 		Assertions.assertEquals(Status.FILE_WRITE_FAIL, fileProcessorResult.status());
 		Assertions.assertEquals("ABC", fileProcessorResult.inputText());
 		Assertions.assertNull(fileProcessorResult.outputText());
